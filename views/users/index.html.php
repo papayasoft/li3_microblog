@@ -1,5 +1,5 @@
+<h3>Stats</h3>
 <ul>
-<?php foreach($users as $user):?>
-	<li><?=$user->name;?></li>
-<?php endforeach;?>
+	<li><?=$shouts;?> Shouts</li>
+	<li><?=$users;?> Users</li>
 </ul>

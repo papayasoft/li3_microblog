@@ -7,7 +7,7 @@ class UsersController extends \lithium\action\Controller{
 
 	public function index(){
 		$users = Users::count();
-		$shots = Shouts::count();
+		$shouts = Shouts::count();
 
 		return compact('users', 'shouts');
 	}
