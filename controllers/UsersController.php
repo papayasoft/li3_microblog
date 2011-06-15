@@ -9,7 +9,7 @@ class UsersController extends \lithium\action\Controller{
 		$users = Users::count();
 		$shots = Shouts::count();
 
-		return $this->compact('users', 'shouts');
+		return compact('users', 'shouts');
 	}
 
 	public function add(){
