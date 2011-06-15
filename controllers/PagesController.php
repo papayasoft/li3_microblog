@@ -6,7 +6,7 @@
  * @license       http://opensource.org/licenses/bsd-license.php The BSD License
  */
 
-namespace app\controllers;
+namespace microblog\controllers;
 
 /**
  * This controller is used for serving static pages by name, which are located in the `/views/pages`
