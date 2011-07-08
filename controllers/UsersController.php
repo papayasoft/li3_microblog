@@ -3,12 +3,13 @@ namespace microblog\controllers;
 
 use microblog\models\Users;
 use microblog\models\Shouts;
+use microblog\models\Follows;
+use lithium\analysis\Logger;
 class UsersController extends \lithium\action\Controller{
 
 	public function index(){
 		$users = Users::all();
 		$shouts = Shouts::count();
-
 		return compact('users', 'shouts');
 	}
 
@@ -16,14 +17,18 @@ class UsersController extends \lithium\action\Controller{
 
 		//Note the <Model>.<Field> notation.
 		$conditions = array('Users.id' => $this->request->id);
-		$with = array('Shouts', 'Follows');
+		$with = array('Shouts');
 
 		$user = Users::find('first', compact('conditions', 'with'));
 		if(!$user){
 			return $this->redirect('Users::index');
 		}
 
-		return compact('user');
+		$conditions = array('Follows.followed_id' => $user->_id);
+		$with = array('Follower');
+		$followers = Follows::all(compact('conditions','with'));
+
+		return compact('user', 'followers');
 	}
 
 	public function add(){
